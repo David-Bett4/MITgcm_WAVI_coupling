@@ -1,0 +1,85 @@
+# ====================================
+# | Parameters for STREAMICE package |
+# ====================================
+ &STREAMICE_PARM01
+ streamice_maxnliter_cpl = 1,
+ streamice_maxcgiter_cpl = 700,
+#############################
+# set to true when coupling
+ STREAMICE_allow_cpl=.TRUE.,
+#############################
+ streamice_vel_update = 43200.,
+ streamice_density = 918.,
+ streamice_density_ocean_avg = 1028.,
+####### HOW STIFF THE ICE IS (smaller --> faster)
+ B_glen_isothermal=605
+################################################
+#
+# IMPORTANT!!!! ################
+ STREAMICEbasalTracConfig='UNIFORM',
+#################################
+#
+ STREAMICEGlenConstConfig='UNIFORM',
+ STREAMICEthickInit='FILE',
+ n_glen = 3.0,
+# IMPORTANT!!!! ################
+ n_basal_friction = .33333333,
+ C_basal_fric_const = 100.
+################################
+ streamice_diagnostic_only=.false.,
+ eps_glen_min = 1.0e-12,
+ eps_u_min = 1.0e-12,
+ streamice_cg_tol = 1.0e-6,
+ STREAMICE_lower_cg_tol = .true.,
+ streamice_nonlin_tol = .0000001,
+ streamice_nonlin_tol_fp = .0000001,
+ streamice_max_cg_iter = 10000,
+ streamice_max_nl_iter = 75,
+# STREAMICE_calve_to_mask = .false.,
+ streamice_CFL_factor = 0.5,
+ STREAMICE_dump_mdsio = .true.,
+ STREAMICEthickFile='streamice_thick_AScoup_WAVI_large_2km_Bedmachine_V3_FULL_SF_rel_4000_2.bin'
+ STREAMICEtopogFile='Streamice_topo_AScoup_WAVI_large_2km_Bedmachine_FULL_V3_dig_all_280_taper_6km_min_140.bin'
+ STREAMICEuFaceBdryFile='umask_AScoup_all_basicWAVI_large_2km.bin'
+ STREAMICEvFaceBdryFile='vmask_AScoup_all_basicWAVI_large_2km.bin'
+ STREAMICEhmaskFile='hmask_AScoup_mask_WAVI_large_2km_Bedmachine_V3_FULL.bin'
+# IMPORTANT!!!! ################
+ STREAMICEbasalTracFile='Cpert.box',
+################################
+ STREAMICE_chkfixedptconvergence=.true.,
+ STREAMICE_chkresidconvergence=.false.,
+# IMPORTANT!!!! ################
+ streamice_smooth_gl_width=10.0
+ streamice_adot_uniform=0.3
+ streamice_alt_driving_stress=.false.
+ STREAMICE_move_front=.true.
+ streamice_calve_to_mask=.true.
+ STREAMICEcalveMaskFile=''
+################################
+ STREAMICE_vel_read_in = .true.,
+ streamice_couple_time = 1000,
+ STREAMICE_U_vel_input='outfile_U',
+ STREAMICE_V_vel_input='outfile_V',
+ STREAMICEPCmaskFile = 'PCmask_test_WAVI_large_2km.bin',
+ STREAMICEHPCFile = 'outfile_Hb',
+ STREAMICEAdotConfig = 'FILE',
+ STREAMICEAdotFile = 'Accumulation_streamice_AScoup_WAVI_large_2km_BedmachineV3_FULL.bin',
+ &
+
+ &STREAMICE_PARM02
+ &
+
+ &STREAMICE_PARMPETSC
+ PETSC_SOLVER_TYPE = 'CG',
+ PETSC_PRECOND_TYPE = 'JACOBI',
+ streamice_use_petsc=.false.,
+ streamice_maxnliter_Petsc=20
+ &
+
+ &STREAMICE_PARM03
+  min_y_noflow_WEST = 0.0,
+  max_y_noflow_WEST = 288.0e3,
+  min_x_noflow_NORTH = 0.0,
+  max_x_noflow_NORTH = 516.0e3,
+ &
+

@@ -1,0 +1,35 @@
+# ===================================
+# | Parameters for SHELFICE package |
+# ===================================
+ &SHELFICE_PARM01
+#
+ SHELFICEtopoFile = 'Shelf_topo_ASr_coup_4_1m_WAVI_MDJWF_large_2km_Bedmachine_V3_FULL_SF_rel_4000_2.bin',
+ SHELFICEwriteState = .TRUE.,
+#
+ SHI_withBL_realFWflux=.true.
+ SHELFICEmassFile = 'shelficemassinit_AScoup_05_WAVI_large_2km_Bedmachine_V3_FULL_SF_rel_4000_2.bin',
+#  
+ SHELFICEconserve = .TRUE.,
+ SHELFICEboundaryLayer = .TRUE.,
+ useISOMIPTD = .FALSE.,
+ SHELFICEuseGammaFrict = .TRUE.,
+ SHELFICEadvDiffHeatFlux = .TRUE.,
+#
+ SHELFICEDragQuadratic = 2.5e-3,
+ SHELFICEselectDragQuadr = 2,
+ shiCdrag = 0.01,
+ SHELFICEheatTransCoeff = 0.025,
+ SHELFICEsaltTransCoeff = 0.00071428571,
+#
+#
+ SHELFICEMassStepping = .true.,
+ SHELFICERemeshFrequency = 21600.0,
+ SHELFICESplitThreshold =1.2,
+ SHELFICEMergeThreshold =.19,
+ shelfice_massmin_trueDens = .true.
+ SHELFICEdepthMinMelt=5.
+#
+ shelfice_conserve_ssh=.true.,
+ SHI_withBL_uStarTopDz=.true.,
+ tauRelaxSSH=86400,
+ &

@@ -1,0 +1,107 @@
+# ====================
+# | Model parameters |
+# ====================
+#
+# Continuous equation parameters
+&PARM01
+
+ Tref = 92*1.0,
+ Sref = 92*34.7,
+ viscAh=0.0,
+ viscAr=1.E-4,
+viscC2leith=1.0,
+ viscC2leithD=1.0,
+ diffKhT=0.0,
+ diffKrT=1.E-5,
+ diffKhS=0.0,
+ diffKrS=1.E-5,
+ no_slip_sides=.false.,
+ no_slip_bottom=.false.,
+ bottomDragQuadratic=2.5E-3,
+ eosType = 'MDJWF',
+ rhoNil=1027.51,
+ HeatCapacity_cp = 3974.0,
+ rhoConst=1027.51,
+ gravity=9.81,
+ gBaro=9.81,
+ convertFW2Salt = -1,
+ useRealFreshWaterFlux = .TRUE.,
+#
+ selectCoriMap=0,
+ f0=-1.4e-4,
+ beta=0.0,
+ implicitDiffusion = .TRUE.,
+ implicitViscosity = .TRUE.,
+ rigidLid=.FALSE.,
+ implicitFreeSurface=.TRUE.,
+ nonlinFreeSurf=4,
+ exactConserv=.TRUE.,
+ useCDScheme = .FALSE.,
+ nonHydrostatic=.FALSE.,
+  hFacMin=0.01,
+ hFacInf=0.008,
+ hFacSup=2.0,
+ staggerTimeStep = .TRUE.,
+ tempAdvScheme = 77,
+ saltAdvScheme = 77,
+ vectorInvariantMomentum = .true.,
+ useSingleCPUio = .TRUE.,
+ readBinaryPrec=64,
+ bottomVisc_pCell=.TRUE.,
+ selectImplicitDrag=2,
+ selectBotDragQuadr=2,
+ &
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters=1000,
+ cg2dTargetResidual=1.E-7,
+ cg3dMaxIters=400,
+ cg3dTargetResidual=1.E-7,
+ cg2dMinColumnEps=4,
+ pReleaseVisc=60,
+ thincolDamp=20.,
+ &
+
+# Time stepping parameters
+ &PARM03
+#
+ niter0=0,
+ ntimesteps=12960,
+#
+ deltaT=800.0,
+ abEps=0.1,
+ cAdjFreq = 0, 
+#
+ pChkptFreq=86400.0,
+ pickupStrictlyMatch=.TRUE.,
+# 30 days
+ chkptFreq=2592000.0,
+#
+ dumpFreq=0.0,
+ dumpInitAndLast=.TRUE.,
+ taveFreq=0.0,
+# 30 days
+ monitorFreq=2592000.,
+ monitorSelect=1,
+# for time dependent open boundary conditions, activate the following 3 lines:
+#  periodicExternalForcing=.TRUE., 
+#  externForcingPeriod=2592000.,
+#  externForcingCycle =31104000.,
+ &
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.TRUE.,
+ delX=280*2000.0,
+ delY=189*2000.0,
+ delR=92*20.0,
+ &
+
+# Input datasets
+ &PARM05
+ bathyFile='BATHY_ASr_wn_05_WAVI_large_2km_Bedmachine_V3_FULL_dig_all_280_taper_6km_min_140.bin',
+ hydrogThetaFile='temp_init_idealised_200_thick_400_spinup_140.bin',
+ hydrogSaltFile='salt_init_idealised_200_thick_400_spinup_140.bin',
+ pSurfInitFile='etainit_ASr_coup_4_1m_WAVI_MDJWF_large_2km_Bedmachine_V3_FULL_SF_rel_4000_2.round.bin',
+ &
